@@ -127,3 +127,32 @@ function escribirTexto() {
     });
 
 }
+// Contador de tiempo juntos
+
+function actualizarTiempo() {
+
+    const inicio = new Date("2021-08-05");
+
+    const hoy = new Date();
+
+
+    const diferencia = hoy - inicio;
+
+
+    const dias = Math.floor(
+        diferencia / (1000 * 60 * 60 * 24)
+    );
+
+
+    const años = Math.floor(dias / 365);
+
+    const restantes = dias % 365;
+
+
+    document.getElementById("tiempoJuntos").innerHTML =
+        `${años} años y ${restantes} días escribiendo nuestra historia ❤️`;
+
+}
+
+
+actualizarTiempo();
