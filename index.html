@@ -1,90 +1,86 @@
-// Mostrar la historia al presionar el botón
+<!DOCTYPE html>
+<html lang="es">
 
-function mostrarHistoria() {
+<head>
 
-    const historia = document.getElementById("historia");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    historia.classList.remove("oculto");
+    <title>Nuestra Historia ❤️</title>
 
+    <link rel="stylesheet" href="style.css?v=3">
 
-    window.scrollTo({
-        top: historia.offsetTop,
-        behavior: "smooth"
-    });
+</head>
 
 
-    // Iniciar música
+<body>
 
-    const musica = document.getElementById("musica");
 
-    if (musica) {
-        musica.play().catch(error => {
-            console.log("No se pudo iniciar la música:", error);
-        });
-    }
+<section class="inicio">
 
+    <div class="contenido-inicio">
 
-    // Iniciar escritura de carta
+        <h1>Nuestra Historia ❤️</h1>
 
-    escribirTexto();
+        <p>
+            Un recuerdo de todo lo que hemos construido juntos
+        </p>
 
 
-    // Actualizar contador
+        <button onclick="mostrarHistoria()">
+            Comenzar
+        </button>
 
-    actualizarTiempo();
 
-}
+    </div>
 
+</section>
 
 
 
 
-// Carrusel de fotos
 
-const fotos = [
-    "foto1.jpg",
-    "foto2.jpg",
-    "foto3.jpg",
-    "foto4.jpg",
-    "foto5.jpg"
-];
+<main id="historia" class="oculto">
 
 
-let indice = 0;
+    <section class="fecha">
 
 
-setInterval(() => {
+        <h2 class="fecha-romantica">
+            05 • 08 • 2021
+        </h2>
 
-    const imagen = document.getElementById("fotoActual");
 
+        <p>
+            El día que comenzó nuestra historia
+        </p>
 
-    if (imagen) {
 
-        imagen.style.opacity = 0;
 
+        <div class="contador">
 
-        setTimeout(() => {
+            <p id="tiempoJuntos">
+                Calculando nuestra historia...
+            </p>
 
-            indice++;
+        </div>
 
 
-            if (indice >= fotos.length) {
-                indice = 0;
-            }
+    </section>
 
 
-            imagen.src = fotos[indice];
 
 
-            imagen.style.opacity = 1;
 
+    <section class="galeria">
 
-        }, 800);
+        <div class="carrusel">
 
-    }
+            <img id="fotoActual" src="foto1.jpg" alt="Nuestra foto">
 
+        </div>
 
-}, 3000);
+    </section>
 
 
 
@@ -92,96 +88,91 @@ setInterval(() => {
 
 
 
-// Efecto escritura de la carta
+    <section class="carta">
 
-function escribirTexto() {
 
-    const textos = document.querySelectorAll(".texto-carta");
+        <h2>Mi amor ❤️</h2>
 
 
-    textos.forEach((texto, index) => {
 
+        <p class="texto-carta">
+            Hoy celebramos un año más de nuestra historia, pero también todos los pequeños momentos que nos han traído hasta aquí.
+        </p>
 
-        const contenido = texto.textContent;
 
 
-        texto.textContent = "";
+        <p class="texto-carta">
+            Gracias por cada abrazo, cada risa y cada conversación que ha hecho nuestros días más especiales. Gracias por acompañarme en los momentos felices y por sostener mi mano cuando más lo he necesitado.
+        </p>
 
 
-        let i = 0;
 
+        <p class="texto-carta">
+            Cada día a tu lado me recuerda lo afortunada que soy de compartir mi vida contigo. Hemos crecido, aprendido y creado recuerdos que siempre voy a guardar en mi corazón.
+        </p>
 
-        setTimeout(() => {
 
 
-            const intervalo = setInterval(() => {
+        <p class="texto-carta">
+            Espero que sigamos escribiendo muchas páginas más de esta historia, disfrutando cada aventura, cada sueño y cada momento juntos.
+        </p>
 
 
-                texto.textContent += contenido.charAt(i);
 
+        <p class="texto-carta">
+            Te amo con todo mi corazón ❤️
+        </p>
 
-                i++;
 
 
-                if (i >= contenido.length) {
+    </section>
 
-                    clearInterval(intervalo);
 
-                }
 
 
-            }, 40);
 
 
 
-        }, index * 3000);
+    <section class="final">
 
 
-    });
+        <h2>
+            Y esto apenas es el comienzo ❤️
+        </h2>
 
-}
 
+        <p>
+            Gracias por cada momento, cada risa y cada recuerdo.
+            Espero seguir escribiendo muchas historias más contigo.
+        </p>
 
 
+    </section>
 
 
 
 
-// Contador de tiempo juntos
 
-function actualizarTiempo() {
+</main>
 
 
-    const inicio = new Date("2021-08-05");
 
 
-    const hoy = new Date();
 
 
-    const diferencia = hoy - inicio;
+<audio id="musica" loop>
 
+    <source src="cancion.mp3" type="audio/mpeg">
 
-    const diasTotales = Math.floor(
-        diferencia / (1000 * 60 * 60 * 24)
-    );
+</audio>
 
 
-    const años = Math.floor(diasTotales / 365);
 
 
-    const diasRestantes = diasTotales % 365;
 
+<script src="script.js?v=3"></script>
 
 
-    const contador = document.getElementById("tiempoJuntos");
+</body>
 
-
-    if (contador) {
-
-        contador.innerHTML =
-        `${años} años y ${diasRestantes} días escribiendo nuestra historia ❤️`;
-
-    }
-
-
-}
+</html>
