@@ -1,6 +1,7 @@
 // Mostrar la historia al presionar el botón
 
 function mostrarHistoria() {
+
     const historia = document.getElementById("historia");
 
     historia.classList.remove("oculto");
@@ -9,8 +10,21 @@ function mostrarHistoria() {
         top: historia.offsetTop,
         behavior: "smooth"
     });
-escribirTexto();
-document.getElementById("musica").play();
+
+
+    // Iniciar música
+
+    const musica = document.getElementById("musica");
+
+    if (musica) {
+        musica.play();
+    }
+
+
+    // Iniciar efecto de escritura
+
+    escribirTexto();
+
 }
 
 
@@ -34,31 +48,38 @@ setInterval(() => {
     const imagen = document.getElementById("fotoActual");
 
 
-    imagen.style.opacity = 0;
+    if (imagen) {
+
+        imagen.style.opacity = 0;
 
 
-    setTimeout(() => {
+        setTimeout(() => {
 
-        indice++;
-
-        if (indice >= fotos.length) {
-            indice = 0;
-        }
+            indice++;
 
 
-        imagen.src = fotos[indice];
+            if (indice >= fotos.length) {
+                indice = 0;
+            }
 
-        imagen.style.opacity = 1;
+
+            imagen.src = fotos[indice];
+
+            imagen.style.opacity = 1;
 
 
-    }, 800);
+        }, 800);
+
+    }
 
 
 }, 3000);
-// Efecto escritura en la carta
 
-const textos = document.querySelectorAll(".texto-carta");
 
+
+
+
+// Efecto escritura de la carta
 
 function escribirTexto() {
 
@@ -67,7 +88,9 @@ function escribirTexto() {
 
     textos.forEach((texto, index) => {
 
+
         const contenido = texto.textContent;
+
 
         texto.textContent = "";
 
@@ -77,21 +100,29 @@ function escribirTexto() {
 
         setTimeout(() => {
 
-            let intervalo = setInterval(() => {
 
-                texto.textContent += contenido[i];
+            const intervalo = setInterval(() => {
+
+
+                texto.textContent += contenido.charAt(i);
+
 
                 i++;
 
 
                 if (i >= contenido.length) {
+
                     clearInterval(intervalo);
+
                 }
+
 
             }, 40);
 
 
+
         }, index * 3000);
+
 
     });
 
