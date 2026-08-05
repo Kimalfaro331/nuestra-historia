@@ -1,149 +1,187 @@
-<!DOCTYPE html>
-<html lang="es">
+// Mostrar la historia al presionar el botón
 
-<head>
+function mostrarHistoria() {
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    const historia = document.getElementById("historia");
 
-    <title>Nuestra Historia ❤️</title>
+    historia.classList.remove("oculto");
 
-    <link rel="stylesheet" href="style.css">
 
-</head>
+    window.scrollTo({
+        top: historia.offsetTop,
+        behavior: "smooth"
+    });
 
 
-<body>
+    // Iniciar música
 
+    const musica = document.getElementById("musica");
 
-<section class="inicio">
+    if (musica) {
+        musica.play().catch(error => {
+            console.log("No se pudo iniciar la música:", error);
+        });
+    }
 
-    <div class="contenido-inicio">
 
-        <h1>Nuestra Historia ❤️</h1>
+    // Iniciar escritura de carta
 
-        <p>
-            Un recuerdo de todo lo que hemos construido juntos
-        </p>
+    escribirTexto();
 
 
-        <button onclick="mostrarHistoria()">
-            Comenzar
-        </button>
+    // Actualizar contador
 
+    actualizarTiempo();
 
-    </div>
+}
 
-</section>
 
 
 
 
-<main id="historia" class="oculto">
+// Carrusel de fotos
 
+const fotos = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto4.jpg",
+    "foto5.jpg"
+];
 
 
-    <section class="fecha">
+let indice = 0;
 
-        <h2 class="fecha-romantica">05 • 08 • 2021</h2>
 
-        <p>
-            El día que comenzó nuestra historia
-        </p>
-        <div class="contador">
+setInterval(() => {
 
-    <p id="tiempoJuntos">
-        Calculando nuestra historia...
-    </p>
+    const imagen = document.getElementById("fotoActual");
 
-</div>
 
-    </section>
+    if (imagen) {
 
+        imagen.style.opacity = 0;
 
 
+        setTimeout(() => {
 
+            indice++;
 
-    <section class="galeria">
 
-        <div class="carrusel">
+            if (indice >= fotos.length) {
+                indice = 0;
+            }
 
-            <img id="fotoActual" src="foto1.jpg" alt="Nuestra foto">
 
-        </div>
+            imagen.src = fotos[indice];
 
-    </section>
 
+            imagen.style.opacity = 1;
 
 
+        }, 800);
 
+    }
 
 
-    <section class="carta">
+}, 3000);
 
 
-        <h2>Mi amor ❤️</h2>
 
 
-        <p class="texto-carta">
-            Hoy celebramos un año más de nuestra historia, pero también todos los pequeños momentos que nos han traído hasta aquí.
-        </p>
 
 
-        <p class="texto-carta">
-            Gracias por cada abrazo, cada risa y cada conversación que ha hecho nuestros días más especiales. Gracias por acompañarme en los momentos felices y por sostener mi mano cuando más lo he necesitado.
-        </p>
 
+// Efecto escritura de la carta
 
-        <p class="texto-carta">
-            Cada día a tu lado me recuerda lo afortunada que soy de compartir mi vida contigo. Hemos crecido, aprendido y creado recuerdos que siempre voy a guardar en mi corazón.
-        </p>
+function escribirTexto() {
 
+    const textos = document.querySelectorAll(".texto-carta");
 
-        <p class="texto-carta">
-            Espero que sigamos escribiendo muchas páginas más de esta historia, disfrutando cada aventura, cada sueño y cada momento juntos.
-        </p>
 
+    textos.forEach((texto, index) => {
 
-        <p class="texto-carta">
-            Te amo con todo mi corazón ❤️
-        </p>
 
+        const contenido = texto.textContent;
 
-    </section>
 
+        texto.textContent = "";
 
-<section class="final">
 
-    <h2>
-        Y esto apenas es el comienzo ❤️
-    </h2>
+        let i = 0;
 
-    <p>
-        Gracias por cada momento, cada risa y cada recuerdo.
-        Espero seguir escribiendo muchas historias más contigo.
-    </p>
 
-</section>
-</main>
+        setTimeout(() => {
 
 
+            const intervalo = setInterval(() => {
 
 
+                texto.textContent += contenido.charAt(i);
 
-<audio id="musica" loop>
 
-    <source src="cancion.mp3" type="audio/mpeg">
+                i++;
 
-</audio>
 
+                if (i >= contenido.length) {
 
+                    clearInterval(intervalo);
 
+                }
 
 
-<script src="script.js?v=2"></script>
+            }, 40);
 
 
-</body>
 
-</html>
+        }, index * 3000);
+
+
+    });
+
+}
+
+
+
+
+
+
+
+// Contador de tiempo juntos
+
+function actualizarTiempo() {
+
+
+    const inicio = new Date("2021-08-05");
+
+
+    const hoy = new Date();
+
+
+    const diferencia = hoy - inicio;
+
+
+    const diasTotales = Math.floor(
+        diferencia / (1000 * 60 * 60 * 24)
+    );
+
+
+    const años = Math.floor(diasTotales / 365);
+
+
+    const diasRestantes = diasTotales % 365;
+
+
+
+    const contador = document.getElementById("tiempoJuntos");
+
+
+    if (contador) {
+
+        contador.innerHTML =
+        `${años} años y ${diasRestantes} días escribiendo nuestra historia ❤️`;
+
+    }
+
+
+}
