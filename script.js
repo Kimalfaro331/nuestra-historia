@@ -1,3 +1,4 @@
+alert("El JavaScript está funcionando");
 // Mostrar la historia al presionar el botón
 
 function mostrarHistoria() {
