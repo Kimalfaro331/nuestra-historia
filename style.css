@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Georgia", serif;
+}
+
+body {
+    background: #ffffff;
+    color: #222;
+}
+
+
+/* Pantalla inicial */
+
+.inicio {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(
+        rgba(255,255,255,0.95),
+        rgba(255,245,245,0.95)
+    );
+}
+
+
+.contenido-inicio h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #8b0000;
+}
+
+
+.contenido-inicio p {
+    font-size: 18px;
+    margin-bottom: 35px;
+    color: #555;
+}
+
+
+button {
+    background: #8b0000;
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+button:hover {
+    transform: scale(1.08);
+    background: #b30000;
+}
+
+
+
+/* Historia */
+
+#historia {
+    padding: 40px 20px;
+}
+
+
+.oculto {
+    display: none;
+}
+
+
+.fecha {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.fecha h2 {
+    font-size: 38px;
+    color: #8b0000;
+}
+
+
+.fecha p {
+    margin-top: 10px;
+    color: #666;
+}
+
+
+
+/* Carrusel */
+
+.galeria {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+
+
+.carrusel {
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+.carrusel img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    transition: opacity 0.8s ease;
+}
+
+
+
+/* Carta */
+
+.carta {
+    max-width: 700px;
+    margin: auto;
+    background: #fff8f8;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    line-height: 1.8;
+}
+
+
+.carta h2 {
+    text-align: center;
+    color: #8b0000;
+    margin-bottom: 25px;
+}
+
+
+.carta p {
+    margin-bottom: 18px;
+    font-size: 17px;
+}
+
+
+
+/* Animación entrada */
+
+#historia {
+    animation: aparecer 1.5s ease;
+}
+
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+
+/* Adaptación celular */
+
+@media(max-width:600px){
+
+    .contenido-inicio h1 {
+        font-size: 34px;
+    }
+
+
+    .fecha h2 {
+        font-size: 30px;
+    }
+
+
+    .carrusel img {
+        height: 350px;
+    }
+
+
+    .carta {
+        padding: 25px;
+    }
+
+}
