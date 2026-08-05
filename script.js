@@ -6,6 +6,7 @@ function mostrarHistoria() {
 
     historia.classList.remove("oculto");
 
+
     window.scrollTo({
         top: historia.offsetTop,
         behavior: "smooth"
@@ -17,15 +18,24 @@ function mostrarHistoria() {
     const musica = document.getElementById("musica");
 
     if (musica) {
-        musica.play();
+        musica.play().catch(error => {
+            console.log("No se pudo iniciar la música:", error);
+        });
     }
 
 
-    // Iniciar efecto de escritura
+    // Iniciar escritura de carta
 
     escribirTexto();
 
+
+    // Actualizar contador
+
+    actualizarTiempo();
+
 }
+
+
 
 
 
@@ -65,6 +75,7 @@ setInterval(() => {
 
             imagen.src = fotos[indice];
 
+
             imagen.style.opacity = 1;
 
 
@@ -74,6 +85,8 @@ setInterval(() => {
 
 
 }, 3000);
+
+
 
 
 
@@ -127,11 +140,20 @@ function escribirTexto() {
     });
 
 }
+
+
+
+
+
+
+
 // Contador de tiempo juntos
 
 function actualizarTiempo() {
 
+
     const inicio = new Date("2021-08-05");
+
 
     const hoy = new Date();
 
@@ -139,20 +161,27 @@ function actualizarTiempo() {
     const diferencia = hoy - inicio;
 
 
-    const dias = Math.floor(
+    const diasTotales = Math.floor(
         diferencia / (1000 * 60 * 60 * 24)
     );
 
 
-    const años = Math.floor(dias / 365);
-
-    const restantes = dias % 365;
+    const años = Math.floor(diasTotales / 365);
 
 
-    document.getElementById("tiempoJuntos").innerHTML =
-        `${años} años y ${restantes} días escribiendo nuestra historia ❤️`;
+    const diasRestantes = diasTotales % 365;
+
+
+
+    const contador = document.getElementById("tiempoJuntos");
+
+
+    if (contador) {
+
+        contador.innerHTML =
+        `${años} años y ${diasRestantes} días escribiendo nuestra historia ❤️`;
+
+    }
+
 
 }
-
-
-actualizarTiempo();
