@@ -154,32 +154,52 @@ function actualizarTiempo() {
 
     const inicio = new Date("2021-08-05");
 
-
     const hoy = new Date();
 
 
-    const diferencia = hoy - inicio;
+
+    let años = hoy.getFullYear() - inicio.getFullYear();
+
+    let meses = hoy.getMonth() - inicio.getMonth();
+
+    let dias = hoy.getDate() - inicio.getDate();
 
 
-    const diasTotales = Math.floor(
-        diferencia / (1000 * 60 * 60 * 24)
-    );
+
+    if (dias < 0) {
+
+        meses--;
+
+        const ultimoMes = new Date(
+            hoy.getFullYear(),
+            hoy.getMonth(),
+            0
+        ).getDate();
+
+        dias += ultimoMes;
+
+    }
 
 
-    const años = Math.floor(diasTotales / 365);
 
+    if (meses < 0) {
 
-    const diasRestantes = diasTotales % 365;
+        años--;
+
+        meses += 12;
+
+    }
 
 
 
     const contador = document.getElementById("tiempoJuntos");
 
 
+
     if (contador) {
 
         contador.innerHTML =
-        `${años} años y ${diasRestantes} días escribiendo nuestra historia ❤️`;
+        `${años} años, ${meses} meses y ${dias} días escribiendo nuestra historia ❤️`;
 
     }
 
