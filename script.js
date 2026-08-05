@@ -1,7 +1,9 @@
 // Mostrar la historia al presionar el botón
 
 function mostrarHistoria() {
-
+    ...
+    escribirTexto();
+}
     const historia = document.getElementById("historia");
 
     historia.classList.remove("oculto");
@@ -62,20 +64,24 @@ const textos = document.querySelectorAll(".texto-carta");
 
 function escribirTexto() {
 
+    const textos = document.querySelectorAll(".texto-carta");
+
+
     textos.forEach((texto, index) => {
 
-        const contenido = texto.innerHTML;
+        const contenido = texto.textContent;
 
-        texto.innerHTML = "";
+        texto.textContent = "";
+
 
         let i = 0;
 
 
         setTimeout(() => {
 
-            const intervalo = setInterval(() => {
+            let intervalo = setInterval(() => {
 
-                texto.innerHTML += contenido.charAt(i);
+                texto.textContent += contenido[i];
 
                 i++;
 
@@ -84,10 +90,10 @@ function escribirTexto() {
                     clearInterval(intervalo);
                 }
 
-            }, 25);
+            }, 40);
 
 
-        }, index * 2500);
+        }, index * 3000);
 
     });
 
