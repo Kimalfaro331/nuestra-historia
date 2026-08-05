@@ -1,9 +1,6 @@
 // Mostrar la historia al presionar el botón
 
 function mostrarHistoria() {
-    ...
-    escribirTexto();
-}
     const historia = document.getElementById("historia");
 
     historia.classList.remove("oculto");
@@ -13,6 +10,7 @@ function mostrarHistoria() {
         behavior: "smooth"
     });
 escribirTexto();
+document.getElementById("musica").play();
 }
 
 
