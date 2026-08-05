@@ -10,7 +10,7 @@ function mostrarHistoria() {
         top: historia.offsetTop,
         behavior: "smooth"
     });
-
+escribirTexto();
 }
 
 
@@ -55,3 +55,40 @@ setInterval(() => {
 
 
 }, 3000);
+// Efecto escritura en la carta
+
+const textos = document.querySelectorAll(".texto-carta");
+
+
+function escribirTexto() {
+
+    textos.forEach((texto, index) => {
+
+        const contenido = texto.innerHTML;
+
+        texto.innerHTML = "";
+
+        let i = 0;
+
+
+        setTimeout(() => {
+
+            const intervalo = setInterval(() => {
+
+                texto.innerHTML += contenido.charAt(i);
+
+                i++;
+
+
+                if (i >= contenido.length) {
+                    clearInterval(intervalo);
+                }
+
+            }, 25);
+
+
+        }, index * 2500);
+
+    });
+
+}
