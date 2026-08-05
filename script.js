@@ -18,11 +18,11 @@ function mostrarHistoria() {
 // Carrusel de fotos
 
 const fotos = [
-    "foto1.jpg.jpg",
-    "foto2.jpg.jpg",
-    "foto3.jpg.jpg",
-    "foto4.jpg.jpg",
-    "foto5.jpg.jpg"
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto4.jpg",
+    "foto5.jpg"
 ];
 
 
