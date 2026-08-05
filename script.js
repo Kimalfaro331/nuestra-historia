@@ -1,7 +1,7 @@
 // Mostrar la historia al presionar el botón
 
 function mostrarHistoria() {
-alert("El boton está funcionando");
+
     const historia = document.getElementById("historia");
 
     historia.classList.remove("oculto");
