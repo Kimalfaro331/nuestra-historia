@@ -5,344 +5,524 @@
     font-family: "Georgia", serif;
 }
 
+
 body {
+
     background: #ffffff;
+
     color: #222;
+
 }
+
 
 
 /* Pantalla inicial */
 
+
 .inicio {
+
     height: 100vh;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     text-align: center;
+
     background: linear-gradient(
         rgba(255,255,255,0.95),
         rgba(255,245,245,0.95)
     );
+
 }
+
 
 
 .contenido-inicio h1 {
+
     font-size: 45px;
+
     margin-bottom: 15px;
+
     color: #8b0000;
+
 }
+
 
 
 .contenido-inicio p {
+
     font-size: 18px;
+
     margin-bottom: 35px;
+
     color: #555;
+
 }
+
+
 
 
 button {
+
     background: #8b0000;
+
     color: white;
+
     border: none;
+
     padding: 15px 45px;
+
     font-size: 18px;
+
     border-radius: 30px;
+
     cursor: pointer;
+
     transition: 0.3s;
+
 }
+
 
 
 button:hover {
+
     transform: scale(1.08);
+
     background: #b30000;
+
 }
+
+
 
 
 
 /* Historia */
 
+
 #historia {
+
     padding: 40px 20px;
+
+    animation: aparecer 1.5s ease;
+
 }
+
 
 
 .oculto {
+
     display: none;
+
 }
+
+
+
+
+
+/* Fecha */
 
 
 .fecha {
+
     text-align: center;
+
     margin-bottom: 40px;
+
 }
 
 
-.fecha h2 {
-    font-size: 38px;
-    color: #8b0000;
+
+
+.fecha-romantica {
+
+
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+
+
+    font-size: 48px;
+
+
+    font-weight: 600;
+
+
+    letter-spacing: 3px;
+
+
+    background: linear-gradient(
+        90deg,
+        #8b0000,
+        #e6a6a6,
+        #8b0000
+    );
+
+
+    background-size: 200%;
+
+
+    -webkit-background-clip: text;
+
+
+    -webkit-text-fill-color: transparent;
+
+
+    animation:
+
+        aparecerFecha 2s ease,
+
+        degradadoFecha 4s infinite linear;
+
+
 }
+
+
+
+@keyframes aparecerFecha {
+
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+
+}
+
+
+
+@keyframes degradadoFecha {
+
+
+    from {
+
+        background-position: 0%;
+
+    }
+
+
+    to {
+
+        background-position: 200%;
+
+    }
+
+
+}
+
+
+
 
 
 .fecha p {
+
     margin-top: 10px;
+
     color: #666;
+
 }
+
+
+
+
+
+/* Contador */
+
+
+.contador {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    color: #8b0000;
+
+    font-style: italic;
+
+}
+
+
 
 
 
 /* Carrusel */
 
+
 .galeria {
+
     display: flex;
+
     justify-content: center;
+
     margin-bottom: 45px;
+
 }
+
 
 
 .carrusel {
+
     width: 90%;
+
     max-width: 500px;
+
     overflow: hidden;
+
     border-radius: 20px;
+
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
 }
+
 
 
 .carrusel img {
+
     width: 100%;
+
     height: 450px;
+
     object-fit: cover;
+
     transition: opacity 0.8s ease;
+
 }
+
+
 
 
 
 /* Carta */
 
+
 .carta {
+
+
     max-width: 700px;
+
     margin: auto;
+
     background: #fff8f8;
+
     padding: 35px;
+
     border-radius: 25px;
+
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
     line-height: 1.8;
+
+
 }
+
 
 
 .carta h2 {
+
+
     text-align: center;
+
     color: #8b0000;
+
     margin-bottom: 25px;
+
+
 }
+
 
 
 .carta p {
+
+
     margin-bottom: 18px;
+
     font-size: 17px;
-}
 
-
-
-/* Animación entrada */
-
-#historia {
-    animation: aparecer 1.5s ease;
-}
-
-
-@keyframes aparecer {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 
 }
 
 
 
-/* Adaptación celular */
-
-@media(max-width:600px){
-
-    .contenido-inicio h1 {
-        font-size: 34px;
-    }
 
 
-    .fecha h2 {
-        font-size: 30px;
-    }
+/* Animación textos */
 
-
-    .carrusel img {
-        height: 350px;
-    }
-
-
-    .carta {
-        padding: 25px;
-    }
-
-}
-/* Animación de aparición de textos */
 
 .fecha,
 .carta h2,
 .carta p {
+
+
     opacity: 0;
+
     transform: translateY(30px);
+
     animation: subirTexto 1s ease forwards;
-}
 
 
-.fecha {
-    animation-delay: 0.3s;
-}
-
-
-.carta h2 {
-    animation-delay: 0.8s;
-}
-
-
-.carta p:nth-child(2) {
-    animation-delay: 1.2s;
-}
-
-
-.carta p:nth-child(3) {
-    animation-delay: 1.6s;
-}
-
-
-.carta p:nth-child(4) {
-    animation-delay: 2s;
-}
-
-
-.carta p:nth-child(5) {
-    animation-delay: 2.4s;
-}
-
-
-.carta p:nth-child(6) {
-    animation-delay: 2.8s;
 }
 
 
 
 @keyframes subirTexto {
 
+
     from {
+
         opacity: 0;
+
         transform: translateY(30px);
+
     }
 
+
     to {
+
         opacity: 1;
+
         transform: translateY(0);
+
     }
 
-}
-/* Fecha elegante */
-
-.fecha-romantica {
-
-    font-family: "Baskerville", "Times New Roman", serif;
-
-    background: linear-gradient(
-        90deg,
-        #8b0000,
-        #ff6b6b,
-        #8b0000
-    );
-
-    background-size: 200%;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation:
-        aparecerFecha 2s ease,
-        degradadoFecha 4s infinite;
 
 }
 
 
-@keyframes aparecerFecha {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-@keyframes degradadoFecha {
-
-    from {
-        background-position: 0%;
-    }
-
-    to {
-        background-position: 200%;
-    }
-
-}
-
-
-/* Contador */
-
-.contador {
-
-    text-align: center;
-    margin-top: 20px;
-
-    font-size: 18px;
-    color: #555;
-
-}
 
 
 
 /* Pantalla final */
 
+
 .final {
+
 
     text-align: center;
 
+    max-width: 650px;
+
     margin: 80px auto 40px;
 
-    max-width: 650px;
 
     padding: 40px;
 
+
     background: #fff8f8;
 
+
     border-radius: 25px;
+
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
 
 }
 
 
+
 .final h2 {
+
 
     color: #8b0000;
 
-    font-family: "Baskerville", serif;
+    font-family: "Brush Script MT", cursive;
+
+    font-size: 35px;
 
     margin-bottom: 20px;
+
+
+}
+
+
+
+.final p {
+
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+
+}
+
+
+
+
+
+/* Animación entrada */
+
+
+@keyframes aparecer {
+
+
+    from {
+
+        opacity: 0;
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+    }
+
+
+}
+
+
+
+
+
+/* Celular */
+
+
+@media(max-width:600px){
+
+
+    .contenido-inicio h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .fecha-romantica {
+
+        font-size: 38px;
+
+    }
+
+
+    .carrusel img {
+
+        height: 350px;
+
+    }
+
+
+    .carta {
+
+        padding: 25px;
+
+    }
+
 
 }
